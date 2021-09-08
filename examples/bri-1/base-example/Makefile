@@ -12,10 +12,10 @@ reset: stop clean
 restart: stop start
 
 start:
-	docker-compose up -d --remove-orphans
+	docker-compose up -d --remove-orphans && docker network prune -f && docker network prune -f
 
 start-attached:
 	docker-compose up --remove-orphans
 
 stop:
-	docker-compose down --remove-orphans
+	docker-compose down --remove-orphans && prvd baseline stack stop --name BobCorp && prvd baseline stack stop --name AliceCorp
